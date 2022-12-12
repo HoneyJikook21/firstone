@@ -8,7 +8,7 @@ def greet():
     print("\033[0m".format(''))
     print('*****************')
 def show_field(f):
-    num = ' 0 1 2'
+    num = '  0 1 2'
     print(num)
     for row, i in zip(f,num.split()):
         print(f'{i} {"".join(str(j) for j in row)}')
