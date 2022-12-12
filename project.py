@@ -1,9 +1,11 @@
 def greet():
     print('*****************')
+    print("\033[3m\033[36m{}".format(""))
     print(' Приветсвуем вас,')
     print(' дорогие игроки, ')
     print('    в игре       ')
     print(' Крестики-нолики ')
+    print("\033[0m".format(''))
     print('*****************')
 def show_field(f):
     num = ' 0 1 2'
@@ -15,23 +17,33 @@ def users_input(f,user):
         place = input(f'Ход: {user}. Введите координаты:').split()
         if len(place)!=2:
             print('**********************')
-            print('Введите две координаты')
+            print('')
+            print("\033[31m{}".format('Введите две координаты'))
+            print("\033[0m".format(''))
             print('**********************')
             continue
         if not (place[0].isdigit() and place[1].isdigit()):
-            print('Введите числа')
+            print('**********************')
+            print('')
+            print("\033[31m{}".format('Введите числа'))
+            print("\033[0m".format(''))
+            print('**********************')
             continue
         x, y = map(int, place)
         if not (x>=0 and x<3 and y>=0 and y<3):
             print('***********************')
-            print(' Вы вышли из диапозона ')
+            print('')
+            print("\033[31m{}".format(' Вы вышли из диапозона '))
             print('Попробуйте ввести снова')
+            print("\033[0m".format(''))
             print('***********************')
             continue
         if f[x][y] != '-':
             print('***************')
-            print(' Клетка занята ')
+            print('')
+            print("\033[31m{}".format(' Клетка занята '))
             print('Выберите другую')
+            print("\033[0m".format(''))
             print('***************')
         break
     return x, y
@@ -58,10 +70,16 @@ def start(field):
             x,y = users_input(field,user)
             field[x][y] = user
         elif count == 9:
-            print('Ничья')
+            print('')
+            print("\033[33m{}".format('__Ничья__'))
+            print("\033[0m".format(''))
+            print('')
             break
         if win(field,user):
-            print(f'Выиграл {user}!')
+            print('')
+            print("\033[32m{}".format(''))
+            print(f'__Выиграл {user}__')
+            print("\033[0m".format(''))
             win(field, user)
             break
         count+=1
