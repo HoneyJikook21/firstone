@@ -50,7 +50,6 @@ class Ship:
     def shooten(self, shot):
         return shot in self.dots
 
-
 class Board:
     def __init__(self, hid=False, size=6):
         self.size = size
@@ -58,7 +57,7 @@ class Board:
 
         self.count = 0
 
-        self.field = [["O"] * size for _ in range(size)]
+        self.field = [ ['0']*size for _ in range(size) ]
 
         self.busy = []
         self.ships = []
@@ -70,7 +69,7 @@ class Board:
             res += f"\n{i + 1} | " + " | ".join(row) + " |"
 
         if self.hid:
-            res = res.replace("■", "O")
+            res = res.replace("■","0")
         return res
 
     def out(self, d):
@@ -87,7 +86,7 @@ class Board:
                 cur = Dot(d.x + dx, d.y + dy)
                 if not (self.out(cur)) and cur not in self.busy:
                     if verb:
-                        self.field[cur.x][cur.y] = "."
+                        self.field[cur.x][cur.y] = 'T'
                     self.busy.append(cur)
 
     def add_ship(self, ship):
@@ -113,7 +112,7 @@ class Board:
         for ship in self.ships:
             if d in ship.dots:
                 ship.lives -= 1
-                self.field[d.x][d.y] = "X"
+                self.field[d.x][d.y] = 'X'
                 if ship.lives == 0:
                     self.count += 1
                     self.contour(ship, verb=True)
@@ -123,7 +122,7 @@ class Board:
                     print("Корабль ранен!")
                     return True
 
-        self.field[d.x][d.y] = "."
+        self.field[d.x][d.y] = 'T'
         print("Мимо!")
         return False
 
@@ -131,7 +130,6 @@ class Board:
         self.busy = []
     def defeat(self):
         return self.count == len(self.ships)
-
 
 class Player:
     def __init__(self, board, enemy):
@@ -152,6 +150,7 @@ class Player:
 
 
 class AI(Player):
+
     def ask(self):
         d = Dot(randint(0, 5), randint(0, 5))
         print(f"Ход компьютера: {d.x + 1} {d.y + 1}")
@@ -159,6 +158,7 @@ class AI(Player):
 
 
 class User(Player):
+
     def ask(self):
         while True:
             cords = input("Ваш ход: ").split()
@@ -258,7 +258,6 @@ class Game:
                 print("Компьютер выиграл!")
                 break
             num += 1
-
     def start(self):
         self.greet()
         self.loop()

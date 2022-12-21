@@ -38,7 +38,7 @@ def users_input(f,user):
             print("\033[0m".format(''))
             print('***********************')
             continue
-        if f[x][y] != '-':
+        if f[x][y] != ' - ':
             print('***************')
             print('')
             print("\033[31m{}".format(' Клетка занята '))
@@ -83,6 +83,6 @@ def start(field):
             win(field, user)
             break
         count+=1
-field = [['-'] * 3 for _ in range(3)]
+field = [['- '] * 3 for _ in range(3)]
 greet()
 start(field)
