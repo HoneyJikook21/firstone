@@ -148,9 +148,7 @@ class Player:
             except BoardException as e:
                 print(e)
 
-
 class AI(Player):
-
     def ask(self):
         d = Dot(randint(0, 5), randint(0, 5))
         print(f"Ход компьютера: {d.x + 1} {d.y + 1}")
@@ -158,7 +156,6 @@ class AI(Player):
 
 
 class User(Player):
-
     def ask(self):
         while True:
             cords = input("Ваш ход: ").split()
