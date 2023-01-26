@@ -7,7 +7,8 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def start(message: telebot.types.Message):
-    text = 'Приветсвую! Чтобы начать работу, введите команду боту в следующем формате:\n<имя валюты> \
+    text = 'Приветсвую! Чтобы начать работу, введите команду боту в следующем формате:\n\
+<валюта, в которой хотите узнать цену> \
 <в какую валюту перевести> \
 <количество переводимой валюты>\nУвидеть список всех доступных валют: /values'
     bot.send_message(message.chat.id, text)
