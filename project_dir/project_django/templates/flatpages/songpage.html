@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock title %}
+
+{% block content %}
+{{flatpage.content}}
+<h2>{{ flatpage.title }}</h2>
+<hr>
+   <h1 style="text-align: center;"><span style="background-color: #99ccff;">Список любимых песен:</span></h1>
+<ul>
+    <li><span style="color: #993366;">twenty one pilots</span> - <span style="color: #333399;">Trees</span></li>
+    <li><span style="color: #993366;">BTS</span> -<span style="color: #333399;"> Louder Than Bombs</span></li>
+    <li><span style="color: #993366;">Fall Out Boy</span> - <span style="color: #333399;">Last of the real ones</span></li>
+    <li><span style="color: #993366;">Bring Me The Horizon</span> - <span style="color: #333399;">Medicine</span></li>
+    <li><span style="color: #993366;">Tomorrow By Together</span> - <span style="color: #333399;">LO$ER=LOVER</span></li>
+    <li><span style="color: #993366;">Thousand Foot Krutch</span> - <span style="color: #333399;">Courtesy Call</span></li>
+    <li><span style="color: #993366;">Nothing But Thieves</span> - <span style="color: #333399;">Can't you afford to be an indivisual?</span></li>
+</ul>
+<hr>
+{{flatpage.content}}
+
+{% endblock content %}

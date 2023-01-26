@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>{{ flatpage.title }}</title>
-</head>
-<body>
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock title %}
+
+{% block content %}
     <h2>{{ flatpage.title }}</h2>
     <hr>
-    <h3>Наши контакты:</h3>
-    {{ flatpage.content }}
-</body>
-</html>
+    <h1 style="text-align: right;"><span style="color: #333399;"><strong>О нас:</strong></span></h1>
+<h2 style="text-align: right;"><span style="color: #666699;"><em>Контакты</em></span></h2>
+<ul style="list-style-type: square;">
+<li style="text-align: right;"><span style="text-decoration: underline;">+74958906735 - наш главный директор И.И. Иванов
+</span></li>
+<li style="text-align: right;"><span style="text-decoration: underline;">+74956703423 - наш менеджер</span></li>
+    <li style="text-align: right;"><span style="text-decoration: underline;">songforever@email.com - наша почта</span></li>
+</ul>
+{{flatpage.content}}
+{% endblock content %}
+
