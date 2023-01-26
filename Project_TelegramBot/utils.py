@@ -9,7 +9,7 @@ class ConvertException(Exception):
 
 class CurrencyConverter:
     @staticmethod
-    def get_price(base: str, sym: str, amount: str):
+    def get_price(base, sym, amount):
         if base == sym:
             raise ConvertException(f'Невозможно перевести одинаковые валюты')
 
@@ -28,9 +28,10 @@ class CurrencyConverter:
         except ValueError:
             raise ConvertException(f'Не удалось обработать количество {amount}')
 
-        r = requests.get(f"https://v6.exchangerate-api.com/v6/69bb5c837e1e9cc9dcbc6ff/latest/{base_key}")
+        r = requests.get(
+            f"https://v6.exchangerate-api.com/v6/8f64654decb02cef01bdef80/latest/{base_key}")
         resp = json.loads(r.content)
-        new_price = resp['conversion_rate'][sym_key]*float(amount)
+        new_price = resp['conversion_rates'][sym_key]*amount
         new_price = round(new_price, 3)
         message = f"Цена {amount} {base} в {sym} : {new_price}"
         return message

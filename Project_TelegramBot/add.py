@@ -29,14 +29,14 @@ def converter(message: telebot.types.Message):
         if len(values) != 3:
             raise ConvertException('Неверное количество параметров.')
 
-        total_base = CurrencyConverter.get_price(*values)
+        answer = CurrencyConverter.get_price(*values)
     except ConvertException as e:
         bot.reply_to(message, f'Ошибка пользователя\n{e}')
     except Exception as e:
         traceback.print_tb(e.__traceback__)
         bot.reply_to(message, f'Не удалось обработать команду:\n{e}')
     else:
-        bot.reply_to(message, total_base)
+        bot.reply_to(message, answer)
 
 
 bot.polling()
